@@ -1,5 +1,14 @@
 {
+  "name": "portfolio",
+  "version": "3.4.0",
+  "description": "making portfolio",
+  "main": "main.js",
+  "scripts": {
+    "build-css": "tailwindcss build input.css -o output.css"
+  },
   "devDependencies": {
     "tailwindcss": "^3.4.0"
-  }
+  },
+  "author": "",
+  "license": "ISC"
 }
