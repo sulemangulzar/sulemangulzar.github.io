@@ -2,26 +2,41 @@ var swiper = new Swiper(".mySwiper", {
   slidesPerView: 3,
   loop: true,
   spaceBetween: 25,
-  centerSlide: "true",
-  fade: "true",
-  grabCursor: "true",
+  centeredSlides: true,
+  effect: "fade",
+  grabCursor: true,
   pagination: {
     el: ".swiper-pagination",
     dynamicBullets: true,
   },
-  keyboard: true,
+  breakpoints: {
+    640: {
+      slidesPerView: 1,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 4,
+      spaceBetween: 40,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 25,
+    },
+  },
+  keyboard: {
+    enabled: true,
+    onlyInViewport: false,
+  },
 });
 
-function openNavbar() {
-  const navbar = document.getElementById("mobile-menu");
-  const rotateRight = document.getElementById("right-angle");
-  const currentLeft = navbar.style.left;
+document.getElementById("menu-button").addEventListener("click", function () {
+  const menu = document.getElementById("mobile-menu");
+  menu.classList.toggle("hidden");
+});
 
-  if (currentLeft === "0px") {
-    navbar.style.left = "-250px";
-    rotateRight.style.transform = "rotate(0deg)";
-  } else {
-    navbar.style.left = "0px";
-    rotateRight.style.transform = "rotate(180deg)";
-  }
-}
+document
+  .getElementById("menu-button-close")
+  .addEventListener("click", function () {
+    const menu = document.getElementById("mobile-menu");
+    menu.classList.add("hidden");
+  });
