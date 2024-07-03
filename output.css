@@ -1025,6 +1025,11 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-gray-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
 .p-2{
   padding: 0.5rem;
 }
@@ -1403,6 +1408,18 @@ video {
 @media (min-width: 1280px){
   .xl\:top-24{
     top: 6rem;
+  }
+
+  .xl\:top-44{
+    top: 11rem;
+  }
+
+  .xl\:top-64{
+    top: 16rem;
+  }
+
+  .xl\:top-28{
+    top: 7rem;
   }
 
   .xl\:ml-44{
