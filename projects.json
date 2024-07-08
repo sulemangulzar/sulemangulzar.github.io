@@ -1,0 +1,44 @@
+{
+  "projects": [
+    {
+      "img": "./images/work.jpg",
+      "Name": "Project 1",
+      "caption": "This is my first project"
+    },
+    {
+      "img": "./images/work.jpg",
+      "Name": "Project 2",
+      "caption": "This is my second project"
+    },
+    {
+      "img": "./images/work.jpg",
+      "Name": "Project 3",
+      "caption": "This is my second project"
+    },
+    {
+      "img": "./images/work.jpg",
+      "Name": "Project 4",
+      "caption": "This is my second project"
+    },
+    {
+      "img": "./images/work.jpg",
+      "Name": "Project 5",
+      "caption": "This is my first project"
+    },
+    {
+      "img": "./images/work.jpg",
+      "Name": "Project 6",
+      "caption": "This is my second project"
+    },
+    {
+      "img": "./images/work.jpg",
+      "Name": "Project 7",
+      "caption": "This is my second project"
+    },
+    {
+      "img": "./images/work.jpg",
+      "Name": "Project 8",
+      "caption": "This is my second project"
+    }
+  ]
+}
