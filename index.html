@@ -105,7 +105,7 @@
     </style>
 </head>
 
-<body class="max-w-screen-2xl bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+<body class="max-w-screen-2xl bg-white dark:bg-gray-900 text-gray-900 dark:text-white select-none">
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 theme-transition bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg dark:shadow-gray-700/20 transition-all duration-300" id="navbar">
         <div class="container mx-auto">
@@ -121,7 +121,7 @@
                     <ul class="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
                          <!-- Dark Mode Toggle -->
                         <div class="dark-mode-toggle" id="darkModeToggle">
-                        <svg class="sun-moon-icon moon-icon w-6 h-6 text-gray-900 dark:text-gray-300 dark:hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <svg class="sun-moon-icon moon-icon w-6 h-6 text-gray-900 dark:text-gray-300 dark:hover:text-white cursor-pointer" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
                         </svg> 
                         </div> 
@@ -264,7 +264,7 @@
 
                     <div class="space-y-6 text-grey-600 dark:text-grey-500 leading-relaxed">
                         <p class="text-lg">
-                            I am <span class="font-semibold text-gray-900 dark:text-white">Suleman Gulzar</span>, an 18-year-old college student and passionate front-end developer. I specialize in creating user-friendly and visually appealing interfaces for web applications.
+                            I am <span class="font-semibold text-gray-900 dark:text-white">Suleman Gulzar</span>, an 19-year-old college student and passionate front-end developer. I specialize in creating user-friendly and visually appealing interfaces for web applications.
                         </p>
                         
                         <p>
@@ -273,11 +273,11 @@
                         
                         <div class="grid grid-cols-2 gap-6 mt-8">
                             <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                                <div class="text-2xl font-bold text-grey-900 dark:text-white mb-2">18</div>
+                                <div class="text-2xl font-bold text-grey-900 dark:text-white mb-2">19</div>
                                 <div class="text-sm text-grey-600 dark:text-gray-400">Years Old</div>
                             </div>
                             <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                                <div class="text-2xl font-bold text-grey-900 dark:text-white mb-2">2+</div>
+                                <div class="text-2xl font-bold text-grey-900 dark:text-white mb-2">1+</div>
                                 <div class="text-sm text-grey-600 dark:text-gray-400">Years Experience</div>
                             </div>
                         </div>
@@ -642,7 +642,7 @@
           <div class="text-gray-600 dark:text-gray-300">Projects Completed</div>
         </div>
         <div class="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-xl">
-          <div class="text-3xl font-bold text-gray mb-2">2+</div>
+          <div class="text-3xl font-bold text-gray mb-2">1+</div>
           <div class="text-gray-600 dark:text-gray-300">Years Experience</div>
         </div>
         <div class="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-xl">
@@ -997,7 +997,7 @@ const mobileMenuCloseBtn = document.getElementById('menu-button-close');
 
         // Typing effect for hero text
         const typingText = document.getElementById('typing-text');
-        const texts = ['UX-UI Designer', 'Frontend Dev', 'Creative Thinker', 'UI Developer'];
+        const texts = ['UX-UI Designer', 'Frontend Dev', 'Creative Thinker', "Data Scientist", 'Python Dev'];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -1082,18 +1082,6 @@ const mobileMenuCloseBtn = document.getElementById('menu-button-close');
             });
         }
 
-        // Add parallax effect to hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroSection = document.getElementById('home');
-            const socialCircles = document.querySelectorAll('.social-circles > div');
-            
-            // Parallax for social circles
-            socialCircles.forEach((circle, index) => {
-                const rate = scrolled * (0.5 + index * 0.1);
-                circle.style.transform = `translateY(${rate}px)`;
-            });
-        });
 
         // Add loading animation
         window.addEventListener('load', () => {
