@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+  body {
+    background: linear-gradient(135deg, #fef3c7, #d1fae5);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.7;
+    animation: float 20s infinite alternate;
+    z-index: -10;
+  }
+  .blob1 { width: 300px; height: 300px; background: #fbbf24; top: -50px; left: -50px; }
+  .blob2 { width: 200px; height: 200px; background: #34d399; bottom: -40px; right: -40px; }
+
+  @keyframes float {
+    0% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(30px) translateX(20px); }
+    100% { transform: translateY(0) translateX(0); }
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+  }
+</style>
+</head>
+<body>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-10 relative card-animate">
+  <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Signup</h2>
+
+  <!-- Display Django messages -->
+  {% if messages %}
+    <div class="mb-4">
+      {% for message in messages %}
+        <p class="text-sm {% if message.tags %}text-red-500{% endif %}">{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <form method="POST" action="{% url 'signup' %}" class="space-y-4 relative">
+      {% csrf_token %}
+      
+    <div class="relative">
+      <i class="fa fa-user input-icon"></i>
+      <input type="text" name="username" placeholder="Full Name" class="w-full p-4 pl-10 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-300 focus:outline-none transition shadow-sm hover:shadow-md" required>
+    </div>
+
+    <div class="relative">
+      <i class="fa fa-envelope input-icon"></i>
+      <input type="email" name="email" placeholder="Email" class="w-full p-4 pl-10 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-300 focus:outline-none transition shadow-sm hover:shadow-md" required>
+    </div>
+
+    <div class="relative">
+      <i class="fa fa-lock input-icon"></i>
+      <input type="password" id="signupPassword" name="password" placeholder="Password" class="w-full p-4 pl-10 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-300 focus:outline-none transition shadow-sm hover:shadow-md" required>
+      <i class="fa fa-eye absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-400" onclick="togglePassword('signupPassword', this)"></i>
+    </div>
+
+    <div class="relative">
+  <i class="fa fa-lock input-icon"></i>
+  <input type="password" id="signupPassword" name="password" placeholder="Password" class="w-full p-4 pl-10 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-300 focus:outline-none transition shadow-sm hover:shadow-md" required>
+  <i class="fa fa-eye absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-400" onclick="togglePassword('signupPassword', this)"></i>
+</div>
+  <!-- Add this password strength indicator -->
+  <div class="password-strength">
+    <div id="strength-bar" class="password-strength-bar"></div>
+  </div>
+  <p id="strength-text" class="text-xs text-gray-500 mt-1"></p>
+
+    <div class="relative">
+      <i class="fa fa-lock input-icon"></i>
+      <input type="password" name="confirm_password" placeholder="Confirm Password" class="w-full p-4 pl-10 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-300 focus:outline-none transition shadow-sm hover:shadow-md" required>
+    </div>
+
+    <button type="submit" class="w-full py-3 bg-green-500 text-white font-semibold rounded-xl hover:bg-green-600 hover:scale-105 transition transform shadow-md">Signup</button>
+  </form>
+
+  <p class="text-center text-gray-500 mt-6 text-sm">
+    Already have an account? 
+    <a href="{% url 'login' %}" class="text-green-500 hover:underline font-semibold">Login</a>
+  </p>
+</div>
+
+<script>
+// Password strength checker
+function checkPasswordStrength(password) {
+    const strengthBar = document.getElementById('strength-bar');
+    const strengthText = document.getElementById('strength-text');
+    
+    let strength = 0;
+    if (password.length >= 8) strength++;
+    if (/[a-z]/.test(password)) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+    const levels = ['weak', 'fair', 'good', 'strong'];
+    const colors = ['#ef4444', '#f59e0b', '#10b981', '#059669'];
+    
+    if (strength > 0) {
+        strengthBar.style.width = (strength * 25) + '%';
+        strengthBar.style.backgroundColor = colors[Math.min(strength - 1, 3)];
+        strengthText.textContent = levels[Math.min(strength - 1, 3)];
+    }
+}
+
+// Form validation
+document.querySelector('form').addEventListener('submit', function(e) {
+    const password = document.querySelector('input[name="password"]').value;
+    const confirmPassword = document.querySelector('input[name="confirm_password"]').value;
+    const email = document.querySelector('input[name="email"]').value;
+    
+    if (password !== confirmPassword) {
+        e.preventDefault();
+        showError('Passwords do not match!');
+        return;
+    }
+    
+    if (password.length < 8) {
+        e.preventDefault();
+        showError('Password must be at least 8 characters long!');
+        return;
+    }
+    
+    if (!isValidEmail(email)) {
+        e.preventDefault();
+        showError('Please enter a valid email address!');
+        return;
+    }
+    
+    showLoading();
+});
+
+function showError(message) {
+    // Remove existing error
+    const existingError = document.querySelector('.client-error');
+    if (existingError) existingError.remove();
+    
+    // Add new error
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'client-error p-3 mb-4 bg-red-50 border border-red-200 rounded-lg text-red-700';
+    errorDiv.textContent = message;
+    document.querySelector('form').insertBefore(errorDiv, document.querySelector('form').firstChild);
+}
+
+function showLoading() {
+    const button = document.querySelector('button[type="submit"]');
+    button.textContent = 'Creating Account...';
+    button.disabled = true;
+}
+
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Add event listener for password input
+document.querySelector('input[name="password"]').addEventListener('input', function() {
+    checkPasswordStrength(this.value);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+  body {
+    background: linear-gradient(135deg, #f3f4f6, #e0e7ff);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  .blob { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.7; animation: float 20s infinite alternate; z-index: -10; }
+  .blob1 { width: 300px; height: 300px; background: #a5b4fc; top: -50px; left: -50px; }
+  .blob2 { width: 200px; height: 200px; background: #fbbf24; bottom: -40px; right: -40px; }
+  @keyframes float { 0% { transform: translateY(0) translateX(0); } 50% { transform: translateY(30px) translateX(20px); } 100% { transform: translateY(0) translateX(0); } }
+  .input-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #9ca3af; }
+</style>
+</head>
+<body>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-10 relative card-animate">
+  <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Login</h2>
+
+  {% if messages %}
+    <div class="mb-4">
+      {% for message in messages %}
+        <p class="text-sm text-red-500">{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <form method="POST" action="{% url 'login' %}" class="space-y-4 relative">
+    {% csrf_token %}
+    <div class="relative">
+      <i class="fa fa-envelope input-icon"></i>
+      <input type="text" name="username" placeholder="Username or Email" class="w-full p-4 pl-10 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-300 focus:outline-none transition shadow-sm hover:shadow-md" required>
+    </div>
+    <div class="relative">
+      <i class="fa fa-lock input-icon"></i>
+      <input type="password" id="loginPassword" name="password" placeholder="Password" class="w-full p-4 pl-10 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-300 focus:outline-none transition shadow-sm hover:shadow-md" required>
+      <i class="fa fa-eye absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-400" onclick="togglePassword('loginPassword', this)"></i>
+    </div>
+    <div class="flex items-center justify-between text-sm">
+      <label class="flex items-center gap-2"><input type="checkbox" class="w-4 h-4"> Remember me</label>
+      <a href="{% url 'password_reset_request' %}" class="text-blue-500 hover:underline">Forgot password?</a>
+    </div>
+    <button type="submit" class="w-full py-3 bg-blue-500 text-white font-semibold rounded-xl hover:bg-blue-600 hover:scale-105 transition transform shadow-md">Login</button>
+  </form>
+
+  <p class="text-center text-gray-500 mt-6 text-sm">
+    Don't have an account? 
+    <a href="{% url 'signup' %}" class="text-blue-500 hover:underline font-semibold">Signup</a>
+  </p>
+</div>
+
+<script>
+  function togglePassword(id, icon) {
+    const input = document.getElementById(id);
+    if(input.type === 'password') {
+      input.type = 'text';
+      icon.classList.remove('fa-eye');
+      icon.classList.add('fa-eye-slash');
+    } else {
+      input.type = 'password';
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    }
+  }
+</script>
+
+</body>
+</html>
