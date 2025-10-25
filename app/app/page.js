@@ -108,18 +108,18 @@ export default function Portfolio() {
     }
   ];
 
-  const skills = [
-    { name: 'Html & CSS', icon: Code, level: 90 },
-    { name: 'React & Next.js', icon: Code, level: 95 },
-    { name: 'UI/UX Design', icon: Palette, level: 90 },
-    { name: 'Responsive Design', icon: Smartphone, level: 92 },
-    { name: 'Performance', icon: Zap, level: 88 },
-    { name: 'TailwindCSS', icon: Code, level: 93 },
-    { name: 'Python', icon: Code, level: 85 },
-    { name: 'Django', icon: Code, level: 80 }
+const skills = [
+  { name: 'HTML & CSS', icon: Code, level: 95 },
+  { name: 'JavaScript (ES6+)', icon: Code, level: 90 },
+  { name: 'React & Next.js', icon: Code, level: 92 },
+  { name: 'Tailwind CSS', icon: Palette, level: 93 },
+  { name: 'UI/UX Design', icon: Palette, level: 88 },
+  { name: 'Python', icon: Code, level: 87 },
+  { name: 'Django', icon: Code, level: 80 },
+  { name: 'Web Scraping', icon: Zap, level: 85 },
+  { name: 'Git & GitHub', icon: Zap, level: 90 },
+];
 
-
-  ];
 
   return (
     <div className={darkMode ? 'dark' : ''}>
@@ -384,42 +384,66 @@ export default function Portfolio() {
         </section>
 
         {/* Skills Section */}
-        <section id="skills" className="relative py-20 px-4 z-10">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-center">Skills & Expertise</h2>
-            <p className="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
-              Combining technical expertise with creative vision to deliver exceptional digital experiences
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {skills.map((skill, index) => {
-                const Icon = skill.icon;
-                return (
-                  <div
-                    key={index}
-                    className="bg-white dark:bg-gray-800 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700"
-                  >
-                    <div className="flex items-center space-x-4 mb-6">
-                      <div className="p-3 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 rounded-xl">
-                        <Icon className="text-purple-600 dark:text-purple-400" size={24} />
-                      </div>
-                      <h3 className="text-2xl font-semibold">{skill.name}</h3>
-                    </div>
-                    <div className="relative h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                      <div
-                        className="absolute top-0 left-0 h-full bg-gradient-to-r from-purple-600 to-blue-600 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                    <div className="text-right mt-2 text-sm font-semibold text-gray-600 dark:text-gray-400">
-                      {skill.level}%
-                    </div>
-                  </div>
-                );
-              })}
+        <section
+  id="skills"
+  className="relative py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-950 dark:to-black overflow-hidden z-10"
+>
+  <div className="max-w-7xl mx-auto relative">
+    {/* Subtle background grid pattern */}
+    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_70%)]" />
+
+    {/* Heading */}
+    <div className="text-center mb-16 relative">
+      <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+        Skills & Expertise
+      </h2>
+      <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Crafting powerful, aesthetic, and scalable digital experiences through
+        modern technologies.
+      </p>
+    </div>
+
+    {/* Skill Cards */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {skills.map((skill, index) => {
+        const Icon = skill.icon;
+        return (
+          <div
+            key={index}
+            className="relative group bg-white/20 dark:bg-gray-800/50 backdrop-blur-lg p-8 rounded-3xl border border-white/30 dark:border-gray-700 transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)]"
+          >
+            {/* Card Glow on Hover */}
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/30 to-blue-600/30 opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500 blur-lg"></div>
+
+            {/* Icon and Title */}
+            <div className="relative flex items-center space-x-4 mb-6">
+              <div className="p-4 bg-gradient-to-br from-purple-600 to-blue-600 text-white rounded-2xl shadow-md">
+                <Icon size={28} />
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+                {skill.name}
+              </h3>
+            </div>
+
+            {/* Animated Skill Bar */}
+            <div className="relative h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+              <div
+                className="absolute top-0 left-0 h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full shadow-[0_0_10px_rgba(147,51,234,0.5)] transition-all duration-1000 ease-out"
+                style={{ width: `${skill.level}%` }}
+              />
+            </div>
+
+            {/* Level Text */}
+            <div className="text-right mt-2 text-sm font-semibold text-gray-600 dark:text-gray-400">
+              {skill.level}%
             </div>
           </div>
-        </section>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
 
         {/* Testimonial Section */}
         <section className="relative py-20 px-4 bg-gray-50 dark:bg-gray-800/50 z-10">
@@ -446,195 +470,217 @@ export default function Portfolio() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="relative py-20 px-4 bg-gradient-to-br from-purple-900 via-purple-800 to-blue-900 text-white z-10">
-          <div className="max-w-6xl mx-auto">
-            <div className="absolute inset-0 bg-[linear-gradient(transparent_95%,rgba(255,255,255,0.05)_95%),linear-gradient(90deg,transparent_95%,rgba(255,255,255,0.05)_95%)] bg-[size:40px_40px]" />
-            <div className="text-center mb-16">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                Have a project in mind?<br />
-                let's make it happen!
-              </h2>
-              <p className="text-xl opacity-90">Get in touch and let's discuss your ideas</p>
+        <section
+  id="contact"
+  className="relative py-20 px-4 bg-gradient-to-br from-purple-900 via-purple-800 to-blue-900 text-white z-10 overflow-hidden"
+>
+  {/* Subtle background lines */}
+  <div className="absolute inset-0 bg-[linear-gradient(transparent_95%,rgba(255,255,255,0.05)_95%),linear-gradient(90deg,transparent_95%,rgba(255,255,255,0.05)_95%)] bg-[size:40px_40px]" />
+
+  <div className="max-w-6xl mx-auto relative">
+    {/* Heading */}
+    <div className="text-center mb-14 px-4">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+        Have a project in mind?<br />
+        Let’s make it happen!
+      </h2>
+      <p className="text-base sm:text-lg md:text-xl opacity-90">
+        Get in touch and let’s discuss your ideas
+      </p>
+    </div>
+
+    {/* Two Columns (stack on mobile) */}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      {/* Left Side - Contact Form */}
+      <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 border border-white/20">
+        <h3 className="text-2xl font-bold mb-6 text-center sm:text-left">
+          Send Me a Message
+        </h3>
+
+        <div className="space-y-4">
+          {/* Name */}
+          <div>
+            <label className="block text-sm font-medium mb-2 opacity-90">Your Name</label>
+            <div className="relative">
+              <User className="absolute left-4 top-1/2 transform -translate-y-1/2 opacity-50" size={20} />
+              <input
+                type="text"
+                name="name"
+                value={contactForm.name}
+                onChange={handleInputChange}
+                placeholder="John Doe"
+                required
+                className="w-full pl-12 pr-4 py-3 sm:py-4 rounded-xl bg-white/10 border border-white/20 placeholder-white/60 text-white focus:outline-none focus:border-white/40 transition-colors"
+              />
+            </div>
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-medium mb-2 opacity-90">Your Email</label>
+            <div className="relative">
+              <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 opacity-50" size={20} />
+              <input
+                type="email"
+                name="email"
+                value={contactForm.email}
+                onChange={handleInputChange}
+                placeholder="john@example.com"
+                required
+                className="w-full pl-12 pr-4 py-3 sm:py-4 rounded-xl bg-white/10 border border-white/20 placeholder-white/60 text-white focus:outline-none focus:border-white/40 transition-colors"
+              />
+            </div>
+          </div>
+
+          {/* Subject */}
+          <div>
+            <label className="block text-sm font-medium mb-2 opacity-90">Subject</label>
+            <input
+              type="text"
+              name="subject"
+              value={contactForm.subject}
+              onChange={handleInputChange}
+              placeholder="Project Discussion"
+              required
+              className="w-full px-4 py-3 sm:py-4 rounded-xl bg-white/10 border border-white/20 placeholder-white/60 text-white focus:outline-none focus:border-white/40 transition-colors"
+            />
+          </div>
+
+          {/* Message */}
+          <div>
+            <label className="block text-sm font-medium mb-2 opacity-90">Message</label>
+            <div className="relative">
+              <MessageSquare className="absolute left-4 top-4 opacity-50" size={20} />
+              <textarea
+                name="message"
+                value={contactForm.message}
+                onChange={handleInputChange}
+                placeholder="Tell me about your project..."
+                rows="4"
+                required
+                className="w-full pl-12 pr-4 py-3 sm:py-4 rounded-xl bg-white/10 border border-white/20 placeholder-white/60 text-white focus:outline-none focus:border-white/40 transition-colors resize-none"
+              ></textarea>
+            </div>
+          </div>
+
+          {/* Button */}
+          <button
+            onClick={handleContactSubmit}
+            disabled={formStatus.type === 'loading'}
+            className="w-full px-8 py-3 sm:py-4 bg-white text-purple-900 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+          >
+            <span>{formStatus.type === 'loading' ? 'Sending...' : 'Send Message'}</span>
+            <Send size={20} />
+          </button>
+
+          {/* Status Message */}
+          {formStatus.message && (
+            <div
+              className={`p-4 rounded-xl text-center font-medium ${
+                formStatus.type === 'success'
+                  ? 'bg-green-500/20 border border-green-500/50'
+                  : formStatus.type === 'error'
+                  ? 'bg-red-500/20 border border-red-500/50'
+                  : 'bg-blue-500/20 border border-blue-500/50'
+              }`}
+            >
+              {formStatus.message}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Right Side - Info, Newsletter, Socials */}
+      <div className="space-y-8">
+        {/* Contact Info */}
+        <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 border border-white/20">
+          <h3 className="text-2xl font-bold mb-6 text-center sm:text-left">Contact Information</h3>
+          <div className="space-y-4">
+            <div className="flex items-start space-x-4">
+              <div className="p-3 bg-white/10 rounded-lg">
+                <Mail size={22} />
+              </div>
+              <div>
+                <div className="font-semibold mb-1">Email</div>
+                <a href="mailto:msulemangulzar@gmail.com" className="opacity-80 hover:opacity-100 transition-opacity">
+                  msulemangulzar@gmail.com
+                </a>
+              </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-12 mb-16">
-              {/* Contact Form */}
-              <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
-                <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-2 opacity-90">Your Name</label>
-                    <div className="relative">
-                      <User className="absolute left-4 top-1/2 transform -translate-y-1/2 opacity-50" size={20} />
-                      <input
-                        type="text"
-                        name="name"
-                        value={contactForm.name}
-                        onChange={handleInputChange}
-                        placeholder="John Doe"
-                        required
-                        className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 placeholder-white/60 text-white focus:outline-none focus:border-white/40 transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2 opacity-90">Your Email</label>
-                    <div className="relative">
-                      <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 opacity-50" size={20} />
-                      <input
-                        type="email"
-                        name="email"
-                        value={contactForm.email}
-                        onChange={handleInputChange}
-                        placeholder="john@example.com"
-                        required
-                        className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 placeholder-white/60 text-white focus:outline-none focus:border-white/40 transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2 opacity-90">Subject</label>
-                    <input
-                      type="text"
-                      name="subject"
-                      value={contactForm.subject}
-                      onChange={handleInputChange}
-                      placeholder="Project Discussion"
-                      required
-                      className="w-full px-4 py-4 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 placeholder-white/60 text-white focus:outline-none focus:border-white/40 transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2 opacity-90">Message</label>
-                    <div className="relative">
-                      <MessageSquare className="absolute left-4 top-4 opacity-50" size={20} />
-                      <textarea
-                        name="message"
-                        value={contactForm.message}
-                        onChange={handleInputChange}
-                        placeholder="Tell me about your project..."
-                        rows="5"
-                        required
-                        className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 placeholder-white/60 text-white focus:outline-none focus:border-white/40 transition-colors resize-none"
-                      ></textarea>
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={handleContactSubmit}
-                    disabled={formStatus.type === 'loading'}
-                    className="w-full px-8 py-4 bg-white text-purple-900 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-                  >
-                    <span>{formStatus.type === 'loading' ? 'Sending...' : 'Send Message'}</span>
-                    <Send size={20} />
-                  </button>
-
-                  {formStatus.message && (
-                    <div className={`p-4 rounded-xl text-center font-medium ${
-                      formStatus.type === 'success' 
-                        ? 'bg-green-500/20 border border-green-500/50' 
-                        : formStatus.type === 'error'
-                        ? 'bg-red-500/20 border border-red-500/50'
-                        : 'bg-blue-500/20 border border-blue-500/50'
-                    }`}>
-                      {formStatus.message}
-                    </div>
-                  )}
-                </div>
+            <div className="flex items-start space-x-4">
+              <div className="p-3 bg-white/10 rounded-lg">
+                <Github size={22} />
               </div>
+              <div>
+                <div className="font-semibold mb-1">GitHub</div>
+                <a href="https://github.com/sulemangulzar" target="_blank" className="opacity-80 hover:opacity-100 transition-opacity">
+                  @sulemangulzar
+                </a>
+              </div>
+            </div>
 
-              {/* Contact Info & Newsletter */}
-              <div className="space-y-8">
-                {/* Contact Information */}
-                <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
-                  <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-start space-x-4">
-                      <div className="p-3 bg-white/10 rounded-lg">
-                        <Mail size={24} />
-                      </div>
-                      <div>
-                        <div className="font-semibold mb-1">Email</div>
-                        <a href="mailto:your-email@example.com" className="opacity-80 hover:opacity-100 transition-opacity">
-                          msulemangulzar@gmail.com
-                        </a>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start space-x-4">
-                      <div className="p-3 bg-white/10 rounded-lg">
-                        <Github size={24} />
-                      </div>
-                      <div>
-                        <div className="font-semibold mb-1">GitHub</div>
-                        <a href="https://github.com/sulemangulzar" target="_blank" rel="noopener noreferrer" className="opacity-80 hover:opacity-100 transition-opacity">
-                          @sulemangulzar
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-4">
-                      <div className="p-3 bg-white/10 rounded-lg">
-                        <Linkedin size={24} />
-                      </div>
-                      <div>
-                        <div className="font-semibold mb-1">LinkedIn</div>
-                        <a href="https://www.linkedin.com/in/suleman-gulzar-026770318/" target="_blank" rel="noopener noreferrer" className="opacity-80 hover:opacity-100 transition-opacity">
-                          My Profile
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Newsletter Subscription */}
-                <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
-                  <h3 className="text-2xl font-bold mb-4">Subscribe to Newsletter</h3>
-                  <p className="opacity-90 mb-6">Get updates on my latest projects and articles</p>
-                  
-                  <div className="flex gap-2">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Email Address"
-                      className="flex-1 px-6 py-4 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 placeholder-white/60 text-white focus:outline-none focus:border-white/40 transition-colors"
-                    />
-                    <button
-                      onClick={handleSubscribe}
-                      className="px-6 py-4 bg-white text-purple-900 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
-                    >
-                      →
-                    </button>
-                  </div>
-                </div>
-
-                {/* Social Links */}
-                <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
-                  <h3 className="text-2xl font-bold mb-6">Follow Me</h3>
-                  <div className="flex space-x-4">
-                    <a href="https://github.com/sulemangulzar" className="w-12 h-12 bg-white/10 backdrop-blur-lg rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 transform hover:scale-110 border border-white/20">
-                      <Github size={20} />
-                    </a>
-                    <a href="https://twitter.com/slmnglzr" className="w-12 h-12 bg-white/10 backdrop-blur-lg rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 transform hover:scale-110 border border-white/20">
-                      <Twitter size={20} />
-                    </a>
-                    <a href="https://www.linkedin.com/in/suleman-gulzar-026770318/" className="w-12 h-12 bg-white/10 backdrop-blur-lg rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 transform hover:scale-110 border border-white/20">
-                      <Linkedin size={20} />
-                    </a>
-                    <a href="mailto:msulemangulzar@gmail.com" className="w-12 h-12 bg-white/10 backdrop-blur-lg rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 transform hover:scale-110 border border-white/20">
-                      <Mail size={20} />
-                    </a>
-                  </div>
-                </div>
+            <div className="flex items-start space-x-4">
+              <div className="p-3 bg-white/10 rounded-lg">
+                <Linkedin size={22} />
+              </div>
+              <div>
+                <div className="font-semibold mb-1">LinkedIn</div>
+                <a href="https://www.linkedin.com/in/suleman-gulzar-026770318/" target="_blank" className="opacity-80 hover:opacity-100 transition-opacity">
+                  My Profile
+                </a>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+
+        {/* Newsletter */}
+        <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 border border-white/20">
+          <h3 className="text-2xl font-bold mb-4 text-center sm:text-left">Subscribe to Newsletter</h3>
+          <p className="opacity-90 mb-6 text-center sm:text-left">
+            Get updates on my latest projects and articles
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email Address"
+              className="flex-1 px-6 py-3 sm:py-4 rounded-xl bg-white/10 border border-white/20 placeholder-white/60 text-white focus:outline-none focus:border-white/40 transition-colors"
+            />
+            <button
+              onClick={handleSubscribe}
+              className="px-6 py-3 sm:py-4 bg-white text-purple-900 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+            >
+              →
+            </button>
+          </div>
+        </div>
+
+        {/* Socials */}
+        <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 border border-white/20">
+          <h3 className="text-2xl font-bold mb-6 text-center sm:text-left">Follow Me</h3>
+          <div className="flex justify-center sm:justify-start space-x-4">
+            <a href="https://github.com/sulemangulzar" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 transform hover:scale-110 border border-white/20">
+              <Github size={20} />
+            </a>
+            <a href="https://twitter.com/slmnglzr" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 transform hover:scale-110 border border-white/20">
+              <Twitter size={20} />
+            </a>
+            <a href="https://www.linkedin.com/in/suleman-gulzar-026770318/" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 transform hover:scale-110 border border-white/20">
+              <Linkedin size={20} />
+            </a>
+            <a href="mailto:msulemangulzar@gmail.com" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 transform hover:scale-110 border border-white/20">
+              <Mail size={20} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
         {/* Footer */}
