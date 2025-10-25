@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* base variables */
+:root{
+  --cyan: #00FFF0;
+  --purple: #8B5CF6;
+}
+
+/* grid texture background (small subtle squares) */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* a class name used in Hero to overlay a grid */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* subtle blur utility (custom name to avoid Tailwind clash) */
+.custom-blur-3xl { filter: blur(40px); }
+
+/* small helper gradient colors (fallback) */
+.bg-cyanish { background: linear-gradient(90deg, rgba(0,255,240,0.12), rgba(139,92,246,0.12)); }
+
+/* animation helpers */
+@keyframes pulseSlow {
+  0% { transform: scale(1); opacity: 0.95 }
+  50% { transform: scale(1.06); opacity: 0.8 }
+  100% { transform: scale(1); opacity: 0.95 }
+}
+.animate-pulse-slow { animation: pulseSlow 6s infinite; }
+
+/* improve text rendering for big headings */
+.font-display { font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+
+/* light / dark base tweaks */
+html { color-scheme: light; }
+html.dark { color-scheme: dark; }
+
+/* small responsive tweaks */
+@media (min-width: 1024px) {
+  .leading-tight { line-height: 0.9; }
+}
+
+/* make buttons look soft in light/dark */
+button { transition: all .18s ease-in-out; }
