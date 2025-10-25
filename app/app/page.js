@@ -404,13 +404,13 @@ const skills = [
     </div>
 
     {/* Skill Cards */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
       {skills.map((skill, index) => {
         const Icon = skill.icon;
         return (
           <div
             key={index}
-            className="relative group bg-white/20 dark:bg-gray-800/50 backdrop-blur-lg p-8 rounded-3xl border border-white/30 dark:border-gray-700 transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)]"
+            className="relative group bg-white/20 dark:bg-gray-800/50 backdrop-blur-lg p-8 rounded-3xl border border-white/30 dark:border-gray-700 transition-all duration-500 hover:scale-[1.03] shadow-md hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)]"
           >
             {/* Card Glow on Hover */}
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600/30 to-blue-600/30 opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500 blur-lg"></div>
@@ -454,7 +454,7 @@ const skills = [
             <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 dark:border-gray-700">
               <div className="text-6xl text-purple-600 dark:text-purple-400 mb-6 leading-none">"</div>
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
-                Youexceeded our expectations—professional, innovative, and a pleasure to collaborate with. Their attention to detail and creative approach truly set them apart.
+                You exceeded our expectations—professional, innovative, and a pleasure to collaborate with. Their attention to detail and creative approach truly set them apart.
               </p>
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
