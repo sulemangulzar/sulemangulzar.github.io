@@ -8,6 +8,10 @@
   --purple: #8B5CF6;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* grid texture background (small subtle squares) */
 .bg-grid {
   background-image:
