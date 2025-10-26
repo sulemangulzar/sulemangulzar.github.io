@@ -17,7 +17,7 @@ export default function ProjectsPage() {
   };
 
   const goToHome = () => {
-    router.push('/'); // ✅ Using router here
+    router.push('/'); 
   };
 
   return (
