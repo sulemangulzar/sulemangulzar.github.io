@@ -31,6 +31,9 @@ export default function Portfolio() {
       setMobileMenuOpen(false);
     }
   };
+  useEffect(() => {
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY); 
+    }, []);
 
   const handleSubscribe = (e) => {
     e.preventDefault();
@@ -53,6 +56,7 @@ export default function Portfolio() {
         message: contactForm.message,
         to_name: 'Suleman',
     };
+    
 
     emailjs.send(serviceID, templateID, templateParams, publicKey)
         .then((response) => {
@@ -73,9 +77,7 @@ export default function Portfolio() {
         setTimeout(() => setFormStatus({ type: '', message: '' }), 8000);
         });
     };
-    useEffect(() => {
-    emailjs.init('sdiOrBTdQwmwffVUc'); // Initialize with your public key
-    }, []);
+    
 
 
   const handleInputChange = (e) => {
