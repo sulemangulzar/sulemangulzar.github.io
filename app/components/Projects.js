@@ -7,21 +7,24 @@ export default function Projects({ goToProjectsPage }) {
       title: 'E-Commerce Platform',
       description: 'Full-stack e-commerce solution with payment integration and real-time inventory management.',
       image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=400&h=300&fit=crop',
-      tags: ['React', 'Node.js', 'MongoDB']
+      tags: ['React', 'Node.js', 'MongoDB'],
+      link: "#"
     },
     {
       year: '2023',
-      title: 'Social Media Dashboard',
-      description: 'Analytics dashboard for social media management with AI-powered insights.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop',
-      tags: ['Next.js', 'TypeScript', 'TailwindCSS']
+      title: 'CineScope',
+      description: 'CineScope - Your ultimate destination for discovering, rating, and tracking movies. Browse thousands of films, watch trailers, read reviews, and find showtimes all in one place.',
+      image: '/images/cinescope.png',
+      tags: ['Next.js', 'JavaScript', 'TailwindCSS'],
+      link: "https://github.com/sulemangulzar/react-movies-website"
     },
     {
       year: '2023',
       title: 'AI Chat Application',
       description: 'Real-time chat app with AI-powered responses and natural language processing.',
       image: 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=400&h=300&fit=crop',
-      tags: ['React', 'Firebase', 'OpenAI']
+      tags: ['React', 'Firebase', 'OpenAI'],
+      link: "#"
     }
   ];
 
@@ -32,7 +35,7 @@ export default function Projects({ goToProjectsPage }) {
           <div>
             <h2 className="text-4xl sm:text-5xl font-bold">Work 21 -24"</h2>
           </div>
-          <button 
+          <button
             onClick={goToProjectsPage}
             className="px-6 py-3 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-all duration-300 transform hover:scale-105 font-semibold flex items-center space-x-2"
           >
@@ -66,16 +69,18 @@ export default function Projects({ goToProjectsPage }) {
                       </span>
                     ))}
                   </div>
-                  <button className="flex items-center space-x-2 text-purple-600 dark:text-purple-400 hover:underline font-semibold group">
-                    <span>View Project</span>
-                    <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    <button className="flex items-center space-x-2 text-purple-600 dark:text-purple-400 hover:underline font-semibold group">
+                      <span>View Project</span>
+                      <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </a>
                 </div>
                 <div className="relative h-64 md:h-auto rounded-2xl overflow-hidden m-4 md:m-8">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover rounded-2xl transform hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full xl:h-96 object-cover rounded-2xl transform hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               </div>
