@@ -13,10 +13,11 @@ export default function AllProjectsPage({ darkMode, toggleDarkMode, goToHome }) 
         },
         {
             year: '2023',
-            title: 'Social Media Dashboard',
-            description: 'Analytics dashboard for social media management with AI-powered insights.',
-            image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop',
-            tags: ['Next.js', 'TypeScript', 'TailwindCSS']
+            title: 'CineScope',
+            description: 'CineScope - Your ultimate destination for discovering, rating, and tracking movies. Browse thousands of films, watch trailers, read reviews, and find showtimes all in one place.',
+            image: '/images/cinescope.png',
+            tags: ['Next.js', 'JavaScript', 'TailwindCSS'],
+            link: "https://github.com/sulemangulzar/react-movies-website"
         },
         {
             year: '2023',
@@ -218,11 +219,12 @@ export default function AllProjectsPage({ darkMode, toggleDarkMode, goToHome }) 
                                             </span>
                                         ))}
                                     </div>
-
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer">
                                     <button className="flex items-center space-x-2 text-purple-600 dark:text-purple-400 hover:underline font-semibold group">
                                         <span>View Project</span>
                                         <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
                                     </button>
+                                    </a>
                                 </div>
                             </div>
                         ))}
