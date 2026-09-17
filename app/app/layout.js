@@ -1,21 +1,17 @@
 'use client'
 import React from 'react'
-import { Poppins } from "next/font/google";
 import DynamicFavicon from '../components/DynamicFavicon'
 
 import './globals.css'
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={poppins.className}>
+    <html lang="en" className="font-sans" suppressHydrationWarning>
       <head>
-        <title>- Portfolio</title>  {/* ← ADD THIS */}
+        <title>Suleman Gulzar — Portfolio</title>
+        <script dangerouslySetInnerHTML={{ __html: `(() => { try { const saved = localStorage.getItem('theme'); const dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches; if (dark) document.documentElement.classList.add('dark'); } catch (error) {} })()` }} />
       </head>
-      <body>
+      <body className="font-sans">
         <DynamicFavicon text="SG" />
         {children}
       </body>

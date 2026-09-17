@@ -6,7 +6,7 @@ export default function Testimonial() {
         <h2 className="text-4xl sm:text-5xl font-bold mb-12">Keeps Us<br />Organized</h2>
         
         <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 dark:border-gray-700">
-          <div className="text-6xl text-purple-600 dark:text-purple-400 mb-6 leading-none">"</div>
+          <div className="text-6xl text-purple-600 dark:text-purple-400 mb-6 leading-none">&quot;</div>
           <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
             You exceeded our expectations—professional, innovative, and a pleasure to collaborate with. Their attention to detail and creative approach truly set them apart.
           </p>

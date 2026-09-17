@@ -1,67 +1,18 @@
-import { Moon, Sun, Menu, X } from 'lucide-react';
+"use client";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
-export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMobileMenuOpen, scrollToSection }) {
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
-      <div className="max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            SG.
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            {['Home', 'About', 'Projects', 'Skills', 'Contact'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
-                className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-medium"
-              >
-                {item}
-              </button>
-            ))}
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-4">
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800"
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-          <div className="px-4 py-4 space-y-4">
-            {['Home', 'About', 'Projects', 'Skills', 'Contact'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
-                className="block w-full text-left py-2 hover:text-purple-600 dark:hover:text-purple-400 font-medium"
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMobileMenuOpen }) {
+  const pathname = usePathname();
+  const links = [['Home','/'],['Projects','/projects'],['Posts','/posts'],['About','/about']];
+  return <header className="relative z-20 mx-auto flex h-[76px] w-[calc(100%-40px)] max-w-[1100px] items-center justify-between">
+    <Link href="/" className="flex items-center gap-2.5 text-[15px] font-bold tracking-[-.3px]"><span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-neutral-900 font-serif text-[11px] font-bold tracking-[-.08em] text-neutral-900 dark:border-white dark:text-white">SG</span><span>Suleman Gulzar</span></Link>
+    <nav className="hidden items-center gap-6 font-mono text-[13px] font-medium uppercase tracking-[.08em] text-neutral-500 dark:text-neutral-400 md:flex">
+      {links.map(([label, href]) => <Link key={href} href={href} className={`hover:text-neutral-950 dark:hover:text-white ${pathname === href ? 'text-neutral-950 dark:text-white' : ''}`}>{label}</Link>)}
+      <button onClick={toggleDarkMode} className="ml-1 flex items-center gap-2 text-neutral-800 transition-colors duration-300 dark:text-neutral-100" aria-label="Toggle color mode"><span className="text-xl">{darkMode ? '☾' : '☼'}</span>{darkMode ? 'Night mode' : 'Day mode'}</button>
     </nav>
-  );
+    <div className="flex items-center gap-3 md:hidden"><button onClick={toggleDarkMode} className="text-xl transition-transform duration-300 hover:rotate-12" aria-label="Toggle color mode">{darkMode ? <Sun size={19}/> : <Moon size={19}/>}</button><button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="rounded-md border border-neutral-300 p-2 dark:border-neutral-700" aria-label="Menu">{mobileMenuOpen ? <X size={18}/> : <Menu size={18}/>}</button></div>
+    {mobileMenuOpen && <nav className="absolute left-0 right-0 top-[68px] rounded-xl border border-neutral-200 bg-white/95 p-4 shadow-lg dark:border-neutral-700 dark:bg-neutral-900/95 md:hidden">{links.map(([label,href]) => <Link onClick={() => setMobileMenuOpen(false)} className="block border-b border-neutral-100 py-3 font-mono text-sm font-medium uppercase tracking-[.08em] last:border-0 dark:border-neutral-800" href={href} key={href}>{label}</Link>)}</nav>}
+  </header>;
 }

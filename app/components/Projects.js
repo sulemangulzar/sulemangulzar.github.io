@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 
 export default function Projects({ goToProjectsPage }) {
@@ -33,7 +34,7 @@ export default function Projects({ goToProjectsPage }) {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-12 flex-col sm:flex-row gap-4">
           <div>
-            <h2 className="text-4xl sm:text-5xl font-bold">Work 21 -24"</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold">Work 21 -24&quot;</h2>
           </div>
           <button
             onClick={goToProjectsPage}
@@ -77,9 +78,11 @@ export default function Projects({ goToProjectsPage }) {
                   </a>
                 </div>
                 <div className="relative h-64 md:h-auto rounded-2xl overflow-hidden m-4 md:m-8">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
+                    width={800}
+                    height={600}
                     className="w-full h-full xl:h-96 object-cover rounded-2xl transform hover:scale-105 transition-transform duration-500"
                   />
                 </div>

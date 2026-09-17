@@ -70,10 +70,10 @@ export default function Contact() {
         <div className="text-center mb-14 px-4">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
             Have a project in mind?<br />
-            Let's make it happen!
+            Let&apos;s make it happen!
           </h2>
           <p className="text-base sm:text-lg md:text-xl opacity-90">
-            Get in touch and let's discuss your ideas
+            Get in touch and let&apos;s discuss your ideas
           </p>
         </div>
 

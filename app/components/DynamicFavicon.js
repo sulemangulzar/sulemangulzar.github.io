@@ -10,20 +10,18 @@ export default function DynamicFavicon({ text = 'SG' }) {
     const ctx = canvas.getContext('2d');
     
     if (ctx) {
-      // Clear background (transparent)
+      // Draw the same monochrome monogram used by the site logo.
       ctx.clearRect(0, 0, 64, 64);
-      
-      // Create gradient for text
-      const gradient = ctx.createLinearGradient(0, 0, 64, 64);
-      gradient.addColorStop(0, '#9333ea'); // purple-600
-      gradient.addColorStop(1, '#2563eb'); // blue-600
-      
-      // Add text with gradient
-      ctx.fillStyle = gradient;
-      ctx.font = 'bold 40px Poppins, Arial, sans-serif';
+      ctx.strokeStyle = '#171717';
+      ctx.lineWidth = 5;
+      ctx.beginPath();
+      ctx.arc(32, 32, 27, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.fillStyle = '#171717';
+      ctx.font = 'bold 25px Georgia, serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(text, 38, 38);
+      ctx.fillText(text, 32, 34);
       
       // Set as favicon
       const link = document.querySelector("link[rel*='icon']") || document.createElement('link');

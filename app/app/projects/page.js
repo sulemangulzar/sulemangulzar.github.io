@@ -1,32 +1,4 @@
 "use client";
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import AllProjectsPage from '@/components/AllProjectsPage';
-
-export default function ProjectsPage() {
-  const [darkMode, setDarkMode] = useState(false);
-  const router = useRouter(); // ✅ Now we use it below
-
-  useEffect(() => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setDarkMode(prefersDark);
-  }, []);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
-  const goToHome = () => {
-    router.push('/'); 
-  };
-
-  return (
-    <div className={darkMode ? 'dark' : ''}>
-      <AllProjectsPage 
-        darkMode={darkMode} 
-        toggleDarkMode={toggleDarkMode} 
-        goToHome={goToHome} 
-      />
-    </div>
-  );
-}
+export default function ProjectsPage(){const [darkMode,setDarkMode]=useState(()=>typeof window !== 'undefined' && (window.localStorage.getItem('theme') === 'dark' || (!window.localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)));const [mobileMenuOpen,setMobileMenuOpen]=useState(false);useEffect(()=>{const savedTheme=window.localStorage.getItem('theme');setDarkMode(savedTheme ? savedTheme === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches)},[]);return <AllProjectsPage darkMode={darkMode} toggleDarkMode={()=>setDarkMode(current=>{const next=!current;window.localStorage.setItem('theme',next?'dark':'light');return next})} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen}/>;}
