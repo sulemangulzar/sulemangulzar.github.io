@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
         <title>Suleman Gulzar — Portfolio</title>
         <script dangerouslySetInnerHTML={{ __html: `(() => { try { const saved = localStorage.getItem('theme'); const dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches; if (dark) document.documentElement.classList.add('dark'); } catch (error) {} })()` }} />
       </head>
-      <body className="font-sans">
+      <body className="cursor-[url('/cursor.svg')_16_16,_auto] font-sans">
         <DynamicFavicon text="SG" />
         {children}
       </body>

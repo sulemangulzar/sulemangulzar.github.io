@@ -8,8 +8,8 @@ export default function Hero() {
         <h1 className="mb-4 max-w-[570px] text-[clamp(2.5rem,5vw,4rem)] font-bold leading-[1.02] tracking-[-.07em]">Building intelligent systems for people.</h1>
         <p className="mb-6 max-w-[510px] text-lg leading-[1.55] text-neutral-500 dark:text-neutral-400">I build practical AI-powered products, intelligent workflows, and voice experiences with LLMs, RAG, agents, and modern web technologies.</p>
         <div className="flex flex-wrap gap-3">
-          <Link href="/projects" className="inline-flex items-center gap-3 rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-bold text-white transition hover:-translate-y-0.5 dark:bg-white dark:text-neutral-900">View Projects <span>→</span></Link>
-          <Link href="/about" className="inline-flex items-center gap-3 rounded-lg border border-neutral-300 px-4 py-2.5 text-sm font-bold transition hover:-translate-y-0.5 dark:border-neutral-700">About Me <span>→</span></Link>
+          <Link href="/projects" className="inline-flex items-center gap-3 rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-bold text-white cursor-[url('/cursor.svg')_16_16,_auto] transition hover:-translate-y-0.5 dark:bg-white dark:text-neutral-900">View Projects <span>→</span></Link>
+          <Link href="/about" className="inline-flex items-center gap-3 rounded-lg border border-neutral-300 px-4 py-2.5 text-sm font-bold cursor-[url('/cursor.svg')_16_16,_auto] transition hover:-translate-y-0.5 dark:border-neutral-700">About Me <span>→</span></Link>
         </div>
       </div>
       <div className="flex justify-center md:justify-end">
